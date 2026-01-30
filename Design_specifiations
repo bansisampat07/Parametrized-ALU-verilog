@@ -1,0 +1,41 @@
+ALU Design Specification 
+
+1. Introduction
+This document defines the architectural and functional specifications for the Parameterized Arithmetic Logic Unit (ALU). 
+
+2. Design Parameters
+| Parameter Name | Default Value |                 Description                       |
+|     WIDTH      |       4       | Bit-width of the data path (operands and result). |
+
+3. Interface Definition
+Data Ports
+* **A [WIDTH-1:0]:** Primary Operand. 
+* **B [WIDTH-1:0]:** Secondary Operand.
+* **Result [WIDTH-1:0]:** Output Data.
+
+4. Functional Description
+
+4.1 Truth Table & Opcode Map
+The ALU responds to the 3-bit `Opcode` as follows:
+
+| Opcode | Mnemonic | Operation | Flags Affected |
+| :--- | :--- | :--- | :--- |
+| `000`  | ADD      | Result = A + B | Z, C, V, N |
+| `001`  | SUB      | Result = A - B | Z, C, V, N |
+| `010`  | AND      | Result = A & B | Z, N |
+| `011`  | OR       | Result = A \| B | Z, N |
+| `100`  | XOR      | Result = A ^ B | Z, N |
+| `101`  | SL       | Result = A << 1| Z, N, C (Shift out) |
+| `110`  | SR       | Result = A >> 1| Z, N |
+| `111`  | CMP      | Result = A < B | Z |
+
+4.2 Flag Logic Definitions
+* **Zero (Z):** Asserts HIGH if `Result` is all logic '0's.
+* **Negative (N):** Asserts HIGH if `Result[MSB]` is '1'.
+* **Carry (C):**
+    * For ADD: Asserts HIGH if the unsigned sum exceeds `(2^WIDTH) - 1`.
+    * For SLL: Captures the bit shifted out of the MSB.
+* **Overflow (V):**
+    * Asserts HIGH if the signed result wraps around the 2's complement boundary.
+    * Equation: `V = ~((A_msb XNOR B_msb) AND (Result_msb XOR A_msb))` (for Addition).
+                `V =  (A_msb XNOR B_msb) AND (Result_msb XOR A_msb)` (for Subtraction).
