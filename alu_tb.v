@@ -1,28 +1,8 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 29.01.2026 21:15:42
-// Design Name: 
-// Module Name: alu_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module alu_tb;
 
-    parameter width = 6;
+    parameter width = 4;
     reg [width-1:0] A,B;
     reg [2:0] OpCode;
     wire [width-1:0] res;
@@ -55,9 +35,8 @@ module alu_tb;
       endtask
       
       initial begin
-      
-        check(6'd24, 6'd3, 3'b000, 6'd27, 0, 0, 0, 0);      
-        /*check(4'd15, 4'd1, 3'b000, 4'd0, 1, 0, 0, 0);
+
+        check(4'd15, 4'd1, 3'b000, 4'd0, 1, 0, 0, 0);
         check(4'd5, 4'd5, 3'b001, 4'd0, 0, 0, 1, 0);
         check(4'd4, 4'd4, 3'b000, 4'b1000, 0, 1, 0, 1);      
         check(4'd3, 4'd2, 3'b111, 4'd0, 0, 0, 1, 0);      
@@ -65,7 +44,7 @@ module alu_tb;
         check(4'b1010, 4'b1100, 3'b011, 4'b1110, 0, 0, 0, 1);
         check(4'b1010, 4'b1100, 3'b100, 4'b0110, 0, 0, 0, 0);
         check(4'b1010, 4'b0000, 3'b101, 4'b0100, 0, 0, 0, 0);
-        */
+        
         $finish;
         end
         
