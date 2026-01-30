@@ -31,7 +31,7 @@ The design was verified using a **Self-Checking Testbench** strategy to ensure r
 
 ### Simulation Results
 <img width="1559" height="314" alt="image" src="https://github.com/user-attachments/assets/2396b4ab-24d4-48d3-9e19-fdf41271f413" />
-Functional verification waveform in Xilinx Vivado demonstrating three critical logic scenarios:
+> Functional verification waveform in Xilinx Vivado demonstrating three critical logic scenarios:
 (1) Unsigned Rollover where 15+1 triggers the Carry flag
 (2) Subtraction (5-5) successfully validating the Zero flag assertion
 (3) Signed Overflow where 4+4 correctly triggers both Overflow and Negative flags.
