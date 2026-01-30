@@ -27,10 +27,13 @@ The design was verified using a **Self-Checking Testbench** strategy to ensure r
 * **Directed Testing:** Specifically targeted "corner cases" such as:
     * **Signed Overflow:** Adding two large positive numbers to produce a negative result (`4 + 4 = -8`).
     * **Unsigned Rollover:** Adding max values to trigger Carry (`15 + 1 = 0`).
-* **Automated Checks:** The testbench compares the DUT (Device Under Test) output against an expected behavioral model and prints `PASS/FAIL` with timestamps.
+* **Automated Checks:** The testbench compares the UUT output against an expected behavioral model and prints `PASS/FAIL`.
 
 ### Simulation Results
 <img width="1559" height="314" alt="image" src="https://github.com/user-attachments/assets/2396b4ab-24d4-48d3-9e19-fdf41271f413" />
 
-> Functional verification waveform in Xilinx Vivado demonstrating three critical logic scenarios:(1) Unsigned Rollover where 15+1 triggers the Carry flag(2) Subtraction (5-5) successfully validating the Zero flag assertion (3) Signed Overflow where 4+4 correctly triggers both Overflow and Negative flags.
+> Functional verification waveform in Xilinx Vivado demonstrating three critical logic scenarios:
+> (1) Unsigned Rollover where 15+1 triggers the Carry flag
+> (2) Subtraction (5-5) successfully validating the Zero flag assertion
+> (3) Signed Overflow where 4+4 correctly triggers both Overflow and Negative flags.
 
